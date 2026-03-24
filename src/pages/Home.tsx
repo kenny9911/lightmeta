@@ -29,7 +29,7 @@ export default function Home() {
             Learn More About Us →
           </Link>
           <a
-            href="mailto:hello@lightmeta.cc"
+            href="mailto:kenny.chien@gmail.com"
             className="px-8 py-3 rounded-xl border border-white/10 text-gray-300 font-semibold text-sm tracking-wide hover:border-white/25 transition-colors"
           >
             联系我们

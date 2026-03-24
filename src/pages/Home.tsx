@@ -1,31 +1,37 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 
-const NAV_ITEMS = ['Thesis', 'Ecosystem', 'Team', 'Insights']
+const NAV_ITEMS = [
+  { label: '理念', href: 'thesis' },
+  { label: '产品', href: 'ecosystem' },
+  { label: '团队', href: 'team' },
+  { label: '洞察', href: 'insights' },
+]
 
 const PRODUCTS = [
   {
     name: 'GnuBot',
     icon: '⚡',
     color: 'cyan',
-    desc: 'AI Operator Agents that learn your processes and execute them reliably inside your existing systems.',
+    desc: 'AI 运营智能体，自动学习企业流程并在现有系统中可靠执行。',
   },
   {
     name: 'AOS',
     icon: '△',
     color: 'accent',
-    desc: 'AI-Native Operating System that turns enterprise data into executable knowledge for AI agents.',
+    desc: 'AI 原生操作系统，将企业数据转化为 AI Agent 可执行的知识。',
   },
   {
     name: 'DataWeave',
     icon: '◈',
     color: 'purple',
-    desc: 'Secure Data Fabric that unifies siloed enterprise data sources into a coherent semantic layer.',
+    desc: '安全数据编织层，打通企业孤岛数据源，构建统一语义层。',
   },
 ]
 
 const TEAM = [
-  { name: 'Kenny Chien', role: 'Founder & CEO', initials: 'KC' },
+  { name: 'Henry', role: '联合创始人', initials: 'H' },
+  { name: 'Kenny', role: '联合创始人', initials: 'K' },
 ]
 
 export default function Home() {
@@ -58,15 +64,15 @@ export default function Home() {
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {NAV_ITEMS.map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-sm text-gray-400 hover:text-white transition-colors">
-                {item}
+              <a key={item.href} href={`#${item.href}`} className="text-sm text-gray-400 hover:text-white transition-colors">
+                {item.label}
               </a>
             ))}
             <a
               href="mailto:kenny.chien@gmail.com"
               className="px-5 py-2 rounded-lg bg-cyan/10 border border-cyan/20 text-cyan text-sm font-semibold hover:bg-cyan/20 transition-all"
             >
-              Contact
+              联系我们
             </a>
           </div>
         </div>
@@ -85,17 +91,17 @@ export default function Home() {
             <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-6">
               <span className="gradient-text">LIGHTMETA</span>
               <br />
-              <span className="text-white">Fueling the Infrastructure of Tomorrow.</span>
+              <span className="text-white">构建明天的智能基础设施</span>
             </h1>
             <p className="text-gray-400 text-lg leading-relaxed mb-8 max-w-lg">
-              We build AI agents that learn how your enterprise actually operates, then reliably execute those processes. Turning your data into knowledge AI can act on.
+              我们构建能够自动学习企业真实运作方式的 AI 智能体，并可靠地执行这些流程。把企业已有的数据，变成 AI 可执行的知识。
             </p>
             <div className="flex gap-4 flex-wrap">
               <a href="#thesis" className="px-7 py-3 rounded-xl bg-gradient-to-r from-cyan/20 to-accent/20 border border-cyan/25 text-cyan font-semibold text-sm hover:border-cyan/40 transition-all">
-                Explore Our Thesis
+                探索我们的理念
               </a>
               <Link to="/pitch" className="px-7 py-3 rounded-xl border border-white/10 text-gray-300 font-semibold text-sm hover:border-white/20 transition-all">
-                Learn More About Us
+                了解更多
               </Link>
             </div>
           </div>
@@ -139,13 +145,13 @@ export default function Home() {
       {/* ===== THESIS ===== */}
       <section id="thesis" ref={addRef(0)} className="fade-in py-24 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-sm font-bold tracking-[3px] uppercase text-cyan mb-4">Our Thesis</h2>
-          <p className="text-gray-500 mb-8">We invest in AI-native operating systems.</p>
+          <h2 className="text-sm font-bold tracking-[3px] uppercase text-cyan mb-4">我们的理念</h2>
+          <p className="text-gray-500 mb-8">我们专注于 AI 原生操作系统。</p>
           <div className="glow-card rounded-2xl p-10 md:p-14">
             <p className="text-xl md:text-2xl font-light text-gray-200 leading-relaxed">
-              We invest in <strong className="text-white font-semibold">AI-native operating systems</strong> and{' '}
-              <strong className="text-white font-semibold">enterprise knowledge infrastructure</strong>.
-              The backbone of the next digital era.
+              我们深耕 <strong className="text-white font-semibold">AI 原生操作系统</strong>与
+              <strong className="text-white font-semibold">企业知识基础设施</strong>——
+              下一个数字时代的核心骨架。
             </p>
           </div>
         </div>
@@ -154,8 +160,8 @@ export default function Home() {
       {/* ===== ECOSYSTEM ===== */}
       <section id="ecosystem" ref={addRef(1)} className="fade-in py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-sm font-bold tracking-[3px] uppercase text-cyan mb-4">Ecosystem & Portfolio</h2>
-          <p className="text-gray-500 mb-10">AI-native cornerstones of our company.</p>
+          <h2 className="text-sm font-bold tracking-[3px] uppercase text-cyan mb-4">产品生态</h2>
+          <p className="text-gray-500 mb-10">AI 原生的核心产品矩阵。</p>
           <div className="grid md:grid-cols-3 gap-5">
             {PRODUCTS.map((p) => (
               <div key={p.name} className="glow-card rounded-2xl p-7 group cursor-default">
@@ -169,7 +175,7 @@ export default function Home() {
                 </div>
                 <p className="text-sm text-gray-400 leading-relaxed mb-4">{p.desc}</p>
                 <Link to="/pitch" className={`text-${p.color} text-xs font-semibold tracking-wide group-hover:underline`}>
-                  View Details →
+                  查看详情 →
                 </Link>
               </div>
             ))}
@@ -180,17 +186,17 @@ export default function Home() {
       {/* ===== TEAM ===== */}
       <section id="team" ref={addRef(2)} className="fade-in py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-sm font-bold tracking-[3px] uppercase text-cyan mb-4">Team & Vision</h2>
-          <p className="text-gray-500 mb-10">Partners in professional excellence.</p>
-          <div className="flex flex-wrap gap-8 justify-center">
+          <h2 className="text-sm font-bold tracking-[3px] uppercase text-cyan mb-4">创始团队</h2>
+          <p className="text-gray-500 mb-10">共同创造卓越。</p>
+          <div className="flex flex-wrap gap-12 justify-center">
             {TEAM.map((m) => (
-              <div key={m.name} className="flex flex-col items-center gap-3 w-32">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan/20 to-purple/20 border border-white/10 flex items-center justify-center text-xl font-bold text-cyan">
+              <div key={m.name} className="flex flex-col items-center gap-3 w-36">
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-cyan/20 to-purple/20 border border-white/10 flex items-center justify-center text-2xl font-bold text-cyan">
                   {m.initials}
                 </div>
                 <div className="text-center">
-                  <p className="text-sm font-semibold text-white">{m.name}</p>
-                  <p className="text-xs text-gray-500">{m.role}</p>
+                  <p className="text-base font-semibold text-white">{m.name}</p>
+                  <p className="text-sm text-gray-500">{m.role}</p>
                 </div>
               </div>
             ))}
@@ -201,14 +207,14 @@ export default function Home() {
       {/* ===== INSIGHTS ===== */}
       <section id="insights" ref={addRef(3)} className="fade-in py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-sm font-bold tracking-[3px] uppercase text-cyan mb-4">Insights</h2>
-          <p className="text-gray-500 mb-10">The latest from LightMeta.</p>
+          <h2 className="text-sm font-bold tracking-[3px] uppercase text-cyan mb-4">洞察</h2>
+          <p className="text-gray-500 mb-10">来自 LightMeta 的思考。</p>
           <div className="glow-card rounded-2xl p-10">
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              "AI models are generic but company processes are specific.
-              The hardest part of enterprise automation was never the AI — <strong className="text-white">it was capturing the knowledge.</strong>"
+              "AI 模型是通用的，但企业流程是专属的。
+              企业自动化最难的从来不是 AI 本身 —— <strong className="text-white">而是捕获那些知识。</strong>"
             </p>
-            <p className="text-sm text-gray-500">— LightMeta Thesis, 2026</p>
+            <p className="text-sm text-gray-500">— LightMeta 创始理念, 2026</p>
           </div>
         </div>
       </section>
@@ -218,8 +224,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex items-center justify-between flex-wrap gap-4">
           <span className="text-sm text-gray-600 font-mono">lightmeta.cc</span>
           <div className="flex items-center gap-6">
-            <a href="mailto:kenny.chien@gmail.com" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">Contact</a>
-            <Link to="/pitch" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">Pitch</Link>
+            <a href="mailto:kenny.chien@gmail.com" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">联系我们</a>
+            <Link to="/pitch" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">详情</Link>
           </div>
         </div>
       </footer>

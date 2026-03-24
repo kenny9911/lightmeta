@@ -1,15 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0c0c14;
-  --color-bg2: #13132a;
+  --color-bg: #060b18;
+  --color-bg2: #0a1128;
+  --color-bg3: #0d1630;
   --color-accent: #4f8fff;
   --color-cyan: #00d4ff;
   --color-purple: #8b5cf6;
   --color-green: #10b981;
   --color-orange: #f59e0b;
   --color-surface: rgba(255, 255, 255, 0.03);
+  --color-surface2: rgba(255, 255, 255, 0.05);
   --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-glow: rgba(0, 212, 255, 0.15);
   --font-sans: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
@@ -19,4 +23,63 @@
     @apply bg-bg text-white antialiased;
     margin: 0;
   }
+
+  ::selection {
+    background: rgba(0, 212, 255, 0.25);
+  }
+}
+
+/* Glow card effect */
+.glow-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  transition: all 0.35s ease;
+}
+.glow-card:hover {
+  border-color: rgba(0, 212, 255, 0.25);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* Hero glow orbs */
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Mesh gradient bg */
+.mesh-bg {
+  background:
+    radial-gradient(ellipse 50% 40% at 20% 50%, rgba(79,143,255,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 80% 30%, rgba(139,92,246,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 30% at 50% 80%, rgba(0,212,255,0.04) 0%, transparent 70%);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #4f8fff 0%, #8b5cf6 35%, #00d4ff 70%, #4f8fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle grid pattern */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Scroll fade */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

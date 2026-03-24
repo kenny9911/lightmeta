@@ -20,7 +20,111 @@
     --text2: #a0a0b8;
     --text3: #6b6b80;
     --border: rgba(255,255,255,0.08);
+    --card-bg: rgba(255,255,255,0.03);
+    --card-hover: rgba(255,255,255,0.06);
+    --card-icon-alpha: 0.15;
+    --table-header-bg: rgba(79,143,255,0.12);
+    --table-row-bg: rgba(255,255,255,0.02);
+    --cta-bg: linear-gradient(135deg, rgba(79,143,255,0.12), rgba(139,92,246,0.12));
+    --cta-border: rgba(79,143,255,0.3);
+    --arch-top-bg: rgba(139,92,246,0.08);
+    --arch-mid-bg: rgba(0,212,255,0.08);
+    --arch-bot-bg: rgba(79,143,255,0.08);
+    --arch-data-bg: rgba(16,185,129,0.06);
   }
+
+  /* ========== LIGHT MODE — Enterprise Professional ========== */
+  [data-theme="light"] {
+    --bg: #f8f9fc;
+    --bg2: #eef1f6;
+    --accent: #2563eb;
+    --cyan: #0284c7;
+    --purple: #7c3aed;
+    --green: #059669;
+    --orange: #d97706;
+    --red: #dc2626;
+    --text: #111827;
+    --text2: #4b5563;
+    --text3: #9ca3af;
+    --border: rgba(0,0,0,0.08);
+    --card-bg: #ffffff;
+    --card-hover: #f3f4f6;
+    --card-icon-alpha: 0.1;
+    --table-header-bg: rgba(37,99,235,0.06);
+    --table-row-bg: #ffffff;
+    --cta-bg: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(124,58,237,0.06));
+    --cta-border: rgba(37,99,235,0.2);
+    --arch-top-bg: rgba(124,58,237,0.06);
+    --arch-mid-bg: rgba(2,132,199,0.06);
+    --arch-bot-bg: rgba(37,99,235,0.06);
+    --arch-data-bg: rgba(5,150,105,0.05);
+  }
+  [data-theme="light"] .hero-title {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 40%, #0284c7 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  [data-theme="light"] .stat-num {
+    background: linear-gradient(135deg, var(--cyan), var(--accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  [data-theme="light"] .stat-num.purple-g { background: linear-gradient(135deg, var(--purple), var(--accent)); -webkit-background-clip: text; }
+  [data-theme="light"] .stat-num.green-g { background: linear-gradient(135deg, var(--green), var(--cyan)); -webkit-background-clip: text; }
+  [data-theme="light"] .stat-num.orange-g { background: linear-gradient(135deg, var(--orange), var(--red)); -webkit-background-clip: text; }
+  [data-theme="light"] .nav {
+    background: rgba(255,255,255,0.9); border-color: var(--border);
+  }
+  [data-theme="light"] .nav-dot { background: #d1d5db; }
+  [data-theme="light"] .nav-dot.active { background: var(--accent); box-shadow: 0 0 12px rgba(37,99,235,0.4); }
+  [data-theme="light"] .card { background: var(--card-bg); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  [data-theme="light"] .card:hover { background: var(--card-hover); border-color: rgba(37,99,235,0.2); }
+  [data-theme="light"] .comp-table th { background: var(--table-header-bg); color: var(--accent); }
+  [data-theme="light"] .comp-table td { background: var(--table-row-bg); }
+  [data-theme="light"] .arch-layer.top { background: var(--arch-top-bg); }
+  [data-theme="light"] .arch-layer.mid { background: var(--arch-mid-bg); }
+  [data-theme="light"] .arch-layer.bot { background: var(--arch-bot-bg); }
+  [data-theme="light"] .arch-layer.data { background: var(--arch-data-bg); }
+  [data-theme="light"] .cta-box { background: var(--cta-bg); border-color: var(--cta-border); }
+  [data-theme="light"] .badge.blue { background: rgba(37,99,235,0.08); color: var(--accent); }
+  [data-theme="light"] .badge.cyan { background: rgba(2,132,199,0.08); color: var(--cyan); }
+  [data-theme="light"] .badge.purple { background: rgba(124,58,237,0.08); color: var(--purple); }
+  [data-theme="light"] .badge.green { background: rgba(5,150,105,0.08); color: var(--green); }
+  [data-theme="light"] .badge.orange { background: rgba(217,119,6,0.08); color: var(--orange); }
+  [data-theme="light"] .card-icon.blue { background: rgba(37,99,235,0.08); }
+  [data-theme="light"] .card-icon.purple { background: rgba(124,58,237,0.08); }
+  [data-theme="light"] .card-icon.green { background: rgba(5,150,105,0.08); }
+  [data-theme="light"] .card-icon.orange { background: rgba(217,119,6,0.08); }
+  [data-theme="light"] .card-icon.red { background: rgba(220,38,38,0.08); }
+  [data-theme="light"] .card-icon.cyan { background: rgba(2,132,199,0.08); }
+  [data-theme="light"] .tl-phase { background: #ffffff; }
+  [data-theme="light"] .slide { border-bottom-color: var(--border); }
+
+  /* Theme toggle */
+  .theme-toggle {
+    position: fixed; top: 28px; right: 100px;
+    z-index: 200; cursor: pointer;
+    width: 48px; height: 26px;
+    border-radius: 13px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 2px;
+    transition: all 0.3s;
+  }
+  .theme-toggle .toggle-knob {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--text3);
+    transition: all 0.3s;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+  }
+  .theme-toggle .toggle-knob::after { content: '🌙'; font-size: 11px; }
+  [data-theme="light"] .theme-toggle { background: rgba(0,0,0,0.05); }
+  [data-theme="light"] .theme-toggle .toggle-knob {
+    transform: translateX(22px);
+    background: var(--accent);
+  }
+  [data-theme="light"] .theme-toggle .toggle-knob::after { content: '☀️'; }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; overflow: hidden; }
@@ -308,6 +412,7 @@
 
     .nav, .keys-hint, .page-num { display: none; }
     .logo-text { font-size: 11px; left: 16px; top: 16px; }
+    .theme-toggle { right: 16px; top: 16px; }
 
     .hero-title { font-size: 40px; letter-spacing: -2px; }
     .title { font-size: 26px; letter-spacing: -1px; }
@@ -373,6 +478,7 @@
 <body>
 
 <div class="logo-text">LIGHTMETA</div>
+<div class="theme-toggle" id="themeToggle" title="切换明暗模式"><div class="toggle-knob"></div></div>
 <div class="page-num" id="pageNum">01 / 10</div>
 <div class="keys-hint">← → 翻页</div>
 
@@ -885,6 +991,22 @@
     if (isMobile()) return;
     const diff = touchStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 50) { diff > 0 ? goTo(current + 1) : goTo(current - 1); }
+  });
+
+  // Theme toggle
+  const toggle = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+  toggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    if (next === 'dark') {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', next);
+    }
+    localStorage.setItem('theme', next);
   });
 </script>
 

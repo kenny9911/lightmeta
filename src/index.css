@@ -83,3 +83,17 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Per-product glow card color variants */
+.glow-card-cyan:hover {
+  border-color: rgba(0, 212, 255, 0.25);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.glow-card-accent:hover {
+  border-color: rgba(79, 143, 255, 0.25);
+  box-shadow: 0 0 30px rgba(79, 143, 255, 0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.glow-card-purple:hover {
+  border-color: rgba(139, 92, 246, 0.25);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+}

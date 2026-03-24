@@ -15,7 +15,7 @@ export default function Home() {
         </h1>
 
         <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-4">
-          用 AI 智能体重新定义企业核心系统
+          Turns data you already have into knowledge AI can execute.
         </p>
         <p className="text-gray-500 mb-12">
           AOS · GnuBot · AI-Consumption Model

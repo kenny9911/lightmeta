@@ -283,22 +283,28 @@
 
   /* ========== MOBILE: convert from slide deck to scrollable page ========== */
   @media (max-width: 768px) {
-    html { overflow: auto; }
-    body { overflow: auto; height: auto; width: auto; }
-    .deck { overflow: visible; height: auto; }
+    html { overflow: auto !important; overflow-x: hidden !important; }
+    body { overflow: auto !important; overflow-x: hidden !important; height: auto !important; width: 100% !important; }
+    .deck { overflow: visible !important; height: auto !important; width: 100% !important; display: flex; flex-direction: column; }
 
-    .slide {
+    .slide,
+    .slide.active,
+    .slide.exit {
       position: relative !important;
+      top: auto !important;
+      left: auto !important;
       opacity: 1 !important;
       transform: none !important;
       pointer-events: auto !important;
-      width: 100%; height: auto; min-height: auto;
-      padding: 60px 20px 40px;
-      transition: none;
+      width: 100% !important;
+      height: auto !important;
+      min-height: auto !important;
+      padding: 60px 20px 40px !important;
+      transition: none !important;
       border-bottom: 1px solid var(--border);
+      overflow: visible !important;
     }
-    .slide:first-child { padding-top: 80px; }
-    .slide.exit { opacity: 1 !important; transform: none !important; }
+    .slide:first-child { padding-top: 80px !important; }
 
     .nav, .keys-hint, .page-num { display: none; }
     .logo-text { font-size: 11px; left: 16px; top: 16px; }
@@ -810,7 +816,10 @@
     nav.appendChild(dot);
   });
 
+  const isMobile = () => window.innerWidth <= 768;
+
   function goTo(n) {
+    if (isMobile()) return;
     if (n < 0 || n >= slides.length || n === current) return;
     slides[current].classList.remove('active');
     slides[current].classList.add('exit');
@@ -838,10 +847,11 @@
     if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
   });
 
-  // Touch / swipe support
+  // Touch / swipe support (desktop only — mobile uses native scroll)
   let touchStartX = 0;
-  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchstart', (e) => { if (!isMobile()) touchStartX = e.touches[0].clientX; });
   document.addEventListener('touchend', (e) => {
+    if (isMobile()) return;
     const diff = touchStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 50) { diff > 0 ? goTo(current + 1) : goTo(current - 1); }
   });

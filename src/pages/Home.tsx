@@ -26,7 +26,7 @@ export default function Home() {
             to="/pitch"
             className="px-8 py-3 rounded-xl bg-gradient-to-r from-accent to-purple text-white font-semibold text-sm tracking-wide hover:opacity-90 transition-opacity"
           >
-            查看 Pitch Deck →
+            Learn More About Us →
           </Link>
           <a
             href="mailto:hello@lightmeta.cc"

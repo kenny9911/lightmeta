@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 export default function PitchDeck() {
   useEffect(() => {
     // Load the standalone pitch deck HTML in an iframe-free way
-    window.location.href = '/pitch-deck-xianghe-2026.html'
+    window.location.href = '/what-we-do-hk.html'
   }, [])
 
   return (

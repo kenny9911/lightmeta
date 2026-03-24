@@ -280,6 +280,88 @@
     font-size: 11px; color: var(--text3); z-index: 100;
     font-family: 'JetBrains Mono';
   }
+
+  /* ========== MOBILE: convert from slide deck to scrollable page ========== */
+  @media (max-width: 768px) {
+    html { overflow: auto; }
+    body { overflow: auto; height: auto; width: auto; }
+    .deck { overflow: visible; height: auto; }
+
+    .slide {
+      position: relative !important;
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto !important;
+      width: 100%; height: auto; min-height: auto;
+      padding: 60px 20px 40px;
+      transition: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .slide:first-child { padding-top: 80px; }
+    .slide.exit { opacity: 1 !important; transform: none !important; }
+
+    .nav, .keys-hint, .page-num { display: none; }
+    .logo-text { font-size: 11px; left: 16px; top: 16px; }
+
+    .hero-title { font-size: 40px; letter-spacing: -2px; }
+    .title { font-size: 26px; letter-spacing: -1px; }
+    .subtitle { font-size: 15px; margin-bottom: 16px; }
+    .big-quote { font-size: 15px; }
+
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .grid { gap: 12px; }
+
+    .card { padding: 18px; }
+    .card h3 { font-size: 15px; }
+    .card p { font-size: 13px; }
+    .card-icon { width: 36px; height: 36px; font-size: 16px; margin-bottom: 12px; }
+
+    .stat-row { gap: 16px; }
+    .stat-num { font-size: 28px; }
+    .stat-label { font-size: 11px; }
+
+    .arch-layer { flex-direction: column; gap: 8px; padding: 14px 16px; }
+    .arch-label { min-width: auto; font-size: 11px; }
+    .arch-content { font-size: 13px; }
+    .arrow-connector { font-size: 14px; margin: 4px 0; }
+
+    .comp-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .comp-table th, .comp-table td { padding: 8px 10px; font-size: 11px; white-space: nowrap; }
+
+    .flex-row { flex-direction: column; }
+
+    .timeline { flex-direction: column; }
+    .tl-phase { border-radius: 0 !important; }
+    .tl-phase:first-child { border-radius: 12px 12px 0 0 !important; }
+    .tl-phase:last-child { border-radius: 0 0 12px 12px !important; }
+    .tl-phase { padding: 16px; }
+
+    .cta-box { padding: 20px 16px; border-radius: 14px; }
+
+    .badge { font-size: 11px; padding: 4px 10px; }
+    .note { font-size: 11px; }
+    .divider { margin: 10px 0; }
+    .left-align { padding: 60px 20px 40px; }
+
+    /* Force flex containers to stack */
+    [style*="display: flex"][style*="gap: 16px"],
+    [style*="display: flex"][style*="gap: 24px"],
+    [style*="display: flex"][style*="gap: 20px"] {
+      flex-direction: column !important;
+    }
+  }
+
+  /* ========== TABLET ========== */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .slide { padding: 40px 40px; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .comp-table th, .comp-table td { padding: 10px 12px; font-size: 13px; }
+    .timeline { flex-direction: column; }
+    .tl-phase { border-radius: 0 !important; }
+    .tl-phase:first-child { border-radius: 12px 12px 0 0 !important; }
+    .tl-phase:last-child { border-radius: 0 0 12px 12px !important; }
+  }
 </style>
 </head>
 <body>
